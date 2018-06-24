@@ -68,6 +68,7 @@ $(function() {
         * should have two expectations: does the menu display when
         * clicked and does it hide when clicked again.
         */
+        // define the menu element
         const menu = document.querySelector('.menu-icon-link');
 
         it('display when clicked', function() {
@@ -83,7 +84,7 @@ $(function() {
 
     /* "Initial Entries" test suite */
 
-    describe('RSS Feeds', function() {
+    describe('Initial Entries', function() {
 
         /* Test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -92,9 +93,20 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            });
+        });
+
+        it('have at least a single entry element after loadFeed is called', function(done) {
+            // find all entry elements within feed container
+            const entries = document.querySelectorAll('.feed .entry');
+            expect(entries.length).toBeGreaterThan(0);
+            done();
+        });
+
     });
-
-
 
     /* "New Feed Selection" test suite */
 
