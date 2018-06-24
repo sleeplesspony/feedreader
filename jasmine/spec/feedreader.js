@@ -110,12 +110,30 @@ $(function() {
 
     /* "New Feed Selection" test suite */
 
-    describe('RSS Feeds', function() {
-       /* TODO: Write a test that ensures when a new feed is loaded
+    describe('New Feed Selection', function() {
+
+        /* Test that ensures when a new feed is loaded
         * by the loadFeed function that the content actually changes.
         * Remember, loadFeed() is asynchronous.
         */ 
+        let initContent;
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                // content for the initial feed
+                initContent = document.querySelector('.feed').innerHTML;
+                loadFeed(1, function() {                    
+                    done();
+                });
+            });
+        });
+
+        it('changes the content', function(done) {
+            // content for new feed
+            let newContent = document.querySelector('.feed').innerHTML;  
+            expect(initContent).toBeDefined();
+            expect(newContent).toBeDefined();                  
+            expect(newContent).not.toBe(initContent);
+            done();
+        });
     });
-
-
 }());
