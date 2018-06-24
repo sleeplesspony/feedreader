@@ -11,6 +11,7 @@ In this project we are given a web-based application that reads RSS feeds with J
 ## Instructions
 
 To view the feed reader application download or clone git repository on your computer and open index.html in your browser.
+Or use the following link [https://sleeplesspony.github.io/feedreader/](https://sleeplesspony.github.io/feedreader/)
 
 ## Tests
 
